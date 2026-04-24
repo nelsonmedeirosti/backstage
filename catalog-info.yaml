@@ -5,8 +5,22 @@ metadata:
   description: Cluster Kubernetes de teste
   annotations:
     'backstage.io/kubernetes.id': eks-robinson
-    'backstage.io/techdocs-ref': .
 spec:
   type: kubernetes-cluster
   owner: user:guest
   system: examples
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payments-api
+  description: API de pagamentos
+  annotations:
+    backstage.io/kubernetes-label-selector: app=payments-api
+    backstage.io/kubernetes-namespace: meu-web-server
+    backstage.io/kubernetes-cluster: eks-robinson
+spec:
+  type: service
+  lifecycle: development
+  owner: user:guest
