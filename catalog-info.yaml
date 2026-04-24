@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: eks-robinson
+  description: Cluster Kubernetes de teste
+spec:
+  type: kubernetes-cluster
+  owner: platform-team
+  system: infraestrutura
