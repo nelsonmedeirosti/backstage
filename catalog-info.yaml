@@ -17,7 +17,7 @@ metadata:
   name: payments-api
   description: API de pagamentos
   annotations:
-    backstage.io/kubernetes-label-selector: app=payments-api
+    backstage.io/kubernetes-label-selector: app=meu-web-server-nginx
     backstage.io/kubernetes-namespace: meu-web-server
     backstage.io/kubernetes-cluster: eks-robinson
 spec:
