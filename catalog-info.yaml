@@ -3,6 +3,8 @@ kind: Resource
 metadata:
   name: eks-robinson
   description: Cluster Kubernetes de teste
+  annotations:
+    'backstage.io/kubernetes.id': eks-robinson
 spec:
   type: kubernetes-cluster
   owner: platform-team
