@@ -5,6 +5,7 @@ metadata:
   description: Cluster Kubernetes de teste
   annotations:
     'backstage.io/kubernetes.id': eks-robinson
+    'backstage.io/techdocs-ref': .
 spec:
   type: kubernetes-cluster
   owner: user:guest
