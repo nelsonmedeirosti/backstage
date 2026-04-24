@@ -7,5 +7,5 @@ metadata:
     'backstage.io/kubernetes.id': eks-robinson
 spec:
   type: kubernetes-cluster
-  owner: guests
+  owner: user:guest
   system: examples
