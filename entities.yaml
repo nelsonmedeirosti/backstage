@@ -23,6 +23,7 @@ spec:
   lifecycle: development
   owner: kubernetes-team
   system: dex
+  providesApis: [dex-api]
 
 ---
 apiVersion: backstage.io/v1alpha1
