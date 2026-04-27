@@ -28,6 +28,26 @@ spec:
   owner: kubernetes-team
   system: dex
   providesApis: [dex-api]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dex-core
+  description: Sistema core do Dex
+  annotations:
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/name=dex
+    backstage.io/kubernetes-namespace: dex
+    backstage.io/kubernetes-cluster: eks-robinson
+  links:
+    - url: https://dexidp.io/docs/
+      title: Documentação Dex
+      icon: docs
+spec:
+  type: service
+  lifecycle: development
+  owner: kubernetes-team
+  system: dex
+  providesApis: [dex-api]
 
 ---
 apiVersion: backstage.io/v1alpha1
