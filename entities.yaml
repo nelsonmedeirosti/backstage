@@ -74,3 +74,84 @@ spec:
       /artists:
         get:
           summary: List all auth
+
+#Traefik
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: traefik
+  description: Sistema responsavel criar proxys para os servicos no k8s
+spec:
+  owner: kubernetes-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: traefik-internal
+  description: Proxy interno dos servicos no kubernetes
+  annotations:
+    backstage.io/kubernetes-label-selector: k8s-app=traefik-internal
+    backstage.io/kubernetes-namespace: traefik
+    backstage.io/kubernetes-cluster: eks-robinson
+  links:
+    - url: https://doc.traefik.io/
+      title: Documentação Traefik
+      icon: docs
+spec:
+  type: service
+  lifecycle: development
+  owner: kubernetes-team
+  system: traefik
+  providesApis: [traefik-api]
+  dependsOn:
+    - resource:default/eks-robinson
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: traefik-external
+  description: Proxy externo dos servicos no kubernetes
+  annotations:
+    backstage.io/kubernetes-label-selector: k8s-app=traefik-external
+    backstage.io/kubernetes-namespace: traefik
+    backstage.io/kubernetes-cluster: eks-robinson
+  links:
+    - url: https://doc.traefik.io/
+      title: Documentação Traefik
+      icon: docs
+spec:
+  type: service
+  lifecycle: development
+  owner: kubernetes-team
+  system: traefik
+  providesApis: [traefik-api]
+  dependsOn:
+    - resource:default/eks-robinson    
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: traefik-api
+  description: api rest traefik
+spec:
+  type: openapi
+  lifecycle: development
+  owner: kubernetes-team
+  system: traefik
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Dex API
+      license:
+        name: MIT
+    servers:
+      - url: http://dex.net/v1
+    paths:
+      /artists:
+        get:
+          summary: List all auth
+    
