@@ -91,7 +91,7 @@ metadata:
   name: traefik-internal
   description: Proxy interno dos servicos no kubernetes
   annotations:
-    backstage.io/kubernetes-label-selector: k8s-app=traefik-internal
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/name=traefik-internal
     backstage.io/kubernetes-namespace: traefik
     backstage.io/kubernetes-cluster: eks-robinson
   links:
@@ -114,7 +114,7 @@ metadata:
   name: traefik-external
   description: Proxy externo dos servicos no kubernetes
   annotations:
-    backstage.io/kubernetes-label-selector: k8s-app=traefik-external
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/name=traefik-external
     backstage.io/kubernetes-namespace: traefik
     backstage.io/kubernetes-cluster: eks-robinson
   links:
