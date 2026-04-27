@@ -27,6 +27,8 @@ spec:
   owner: kubernetes
   system: dex
   providesApis: [dex-api]
+  dependsOn:
+    - component:default/dex-core
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -47,6 +49,8 @@ spec:
   owner: kubernetes
   system: dex
   providesApis: [dex-api]
+  dependencyOf:
+    - component:default/dex-authentication
 
 ---
 apiVersion: backstage.io/v1alpha1
