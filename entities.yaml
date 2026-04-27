@@ -1,0 +1,21 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: Kubernetes
+  description: Time responsavel pelo gerenciamento dos clusters k8s
+spec:
+  owner: kubernetes-team
+  domain: kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dex
+  description: Sistema de autenticacao dos clusters
+spec:
+  type: servico
+  lifecycle: production
+  owner: kubernetes-team
+  system: kubernetes
