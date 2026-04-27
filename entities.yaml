@@ -15,8 +15,8 @@ metadata:
   name: dex-authentication
   description: Sistema de autenticacao dos clusters
   annotations:
-    backstage.io/kubernetes-label-selector: app=meu-web-server-nginx
-    backstage.io/kubernetes-namespace: meu-web-server
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/name=dex-k8s-authenticator
+    backstage.io/kubernetes-namespace: dex
     backstage.io/kubernetes-cluster: eks-robinson
 spec:
   type: service
