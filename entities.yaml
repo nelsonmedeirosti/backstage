@@ -5,8 +5,7 @@ metadata:
   name: dex
   description: Sistema responsavel por autenticar usuarios no cluster
 spec:
-  owner: kubernetes-team
-  domain: kubernetes
+  owner: kubernetes
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -25,7 +24,7 @@ metadata:
 spec:
   type: service
   lifecycle: development
-  owner: kubernetes-team
+  owner: kubernetes
   system: dex
   providesApis: [dex-api]
 ---
@@ -45,7 +44,7 @@ metadata:
 spec:
   type: service
   lifecycle: development
-  owner: kubernetes-team
+  owner: kubernetes
   system: dex
   providesApis: [dex-api]
 
@@ -58,7 +57,7 @@ metadata:
 spec:
   type: openapi
   lifecycle: development
-  owner: kubernetes-team
+  owner: kubernetes
   system: dex
   definition: |
     openapi: "3.0.0"
