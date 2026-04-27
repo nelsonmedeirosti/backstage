@@ -1,0 +1,24 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: kubernetes-team
+  description: Time responsavel pelo gerenciamento dos clusters k8s
+spec:
+  type: team
+  profile:
+    displayName: kubernetes
+    email: kubernetes@example.com
+    picture: https://assets.dio.me/xJRpZCCnO_AEhSlrcqlVwWjIMe0AoIVgpg354jSTgtU/f:webp/q:80/L2FydGljbGVzL2NvdmVyL2QxNTY0MWJmLTljZWUtNDkzZS1hNWE0LWY0MWNhMGZmZTdmNy5wbmc
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: nelson 
+spec:
+  profile:
+    displayName: Nelson Medeiros
+    email: nelson@example.com
+    picture: https://i.pinimg.com/564x/d6/7f/5e/d67f5e1768dde6d0703f7fa8f2bf5e3d.jpg
+  memberOf: [guests, kubernetes-team]
