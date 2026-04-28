@@ -44,7 +44,6 @@ spec:
                       - System
                     catalogFilter:
                       - kind: System
-                        spec.owner: ${{ parameters.owner }}
 
     - title: Kubernetes
       required:
