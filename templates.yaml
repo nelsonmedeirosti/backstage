@@ -34,7 +34,7 @@ spec:
         kubernetesId:
           title: Kubernetes App ID
           type: string
-          description: Deve bater com label do deployment
+          description: "Deve bater com label do deployment"
         kubernetesNamespace:
           title: Namespace
           type: string
