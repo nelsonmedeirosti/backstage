@@ -30,16 +30,21 @@ spec:
             catalogFilter:
               - kind: Group
                 spec.type: team
-        system:
-          title: Sistema
-          type: string
-          ui:field: EntityPicker
-          ui:options:
-            allowedKinds:
-              - System
-            catalogFilter:
-              - kind: System
-                spec.owner: ${{ parameters.owner }}
+
+      dependencies:
+        owner:
+          allOf:
+            - properties:
+                system:
+                  title: Sistema
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - System
+                    catalogFilter:
+                      - kind: System
+                        spec.owner: ${{ parameters.owner }}
 
     - title: Kubernetes
       required:
