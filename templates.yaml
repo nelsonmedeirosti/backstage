@@ -1,0 +1,133 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-component-with-api-k8s
+  title: Criar Component com API, Dependências e Kubernetes
+  description: Cria componente com suporte a API, dependências e integração com Kubernetes
+spec:
+  owner: kubernetes-team
+  type: service
+
+  parameters:
+    - title: Informações Básicas
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Nome do componente
+          type: string
+        description:
+          title: Descrição
+          type: string
+        owner:
+          title: Owner
+          type: string
+        system:
+          title: Sistema (opcional)
+          type: string
+
+    - title: Kubernetes
+      required:
+        - kubernetesId
+      properties:
+        kubernetesId:
+          title: Kubernetes App ID
+          type: string
+          description: Deve bater com label do deployment (ex: app ou app.kubernetes.io/name)
+        kubernetesNamespace:
+          title: Namespace
+          type: string
+        kubernetesCluster:
+          title: Cluster (opcional)
+          type: string
+
+    - title: API (Opcional)
+      properties:
+        hasApi:
+          title: Deseja adicionar uma API?
+          type: boolean
+          default: false
+        apiName:
+          title: Nome da API
+          type: string
+        apiType:
+          title: Tipo da API
+          type: string
+          enum:
+            - openapi
+            - grpc
+            - asyncapi
+
+    - title: Dependências (Opcional)
+      properties:
+        dependencies:
+          title: Dependências (nomes dos componentes)
+          type: array
+          items:
+            type: string
+
+    - title: Repositório GitHub
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repositório GitHub
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+
+  steps:
+    - id: fetch-base
+      name: Baixar template base
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+
+    - id: generate-catalog-info
+      name: Gerar catalog-info.yaml
+      action: fetch:template
+      input:
+        url: ./catalog-template
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          system: ${{ parameters.system }}
+
+          kubernetesId: ${{ parameters.kubernetesId }}
+          kubernetesNamespace: ${{ parameters.kubernetesNamespace }}
+          kubernetesCluster: ${{ parameters.kubernetesCluster }}
+
+          hasApi: ${{ parameters.hasApi }}
+          apiName: ${{ parameters.apiName }}
+          apiType: ${{ parameters.apiType }}
+
+          dependencies: ${{ parameters.dependencies }}
+
+    - id: publish
+      name: Publicar no GitHub
+      action: publish:github
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+        description: ${{ parameters.description }}
+
+    - id: register
+      name: Registrar no catálogo
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Repositório
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Abrir no catálogo
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
