@@ -52,25 +52,31 @@ spec:
           title: Namespace
           type: string
         kubernetesCluster:
-          title: Cluster (opcional)
+          title: Cluster
           type: string
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - Resource
+            catalogFilter:
+              - kind: Resource
+                spec.type: kubernetes-cluster
 
     - title: API (Opcional)
       properties:
         hasApi:
-          title: Deseja adicionar uma API?
+          title: Deseja relacionar uma API?
           type: boolean
           default: false
         apiName:
           title: Nome da API
           type: string
-        apiType:
-          title: Tipo da API
-          type: string
-          enum:
-            - openapi
-            - grpc
-            - asyncapi
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - API
+            catalogFilter:
+              - kind: API
 
     - title: Dependências (Opcional)
       properties:
@@ -79,6 +85,11 @@ spec:
           type: array
           items:
             type: string
+            ui:field: EntityPicker
+            ui:options:
+              allowedKinds:
+                - Components
+                - Resources
 
     - title: Repositório GitHub
       required:
