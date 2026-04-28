@@ -90,6 +90,9 @@ spec:
               allowedKinds:
                 - Components
                 - Resources
+              catalogFilter:
+              - kind: Components
+              - kind: Resources
 
     - title: Repositório GitHub
       required:
