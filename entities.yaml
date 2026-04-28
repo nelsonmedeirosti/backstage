@@ -5,7 +5,7 @@ metadata:
   name: dex
   description: Sistema responsavel por autenticar usuarios no cluster
 spec:
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -24,7 +24,7 @@ metadata:
 spec:
   type: service
   lifecycle: development
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
   system: dex
   providesApis: [dex-api]
   dependsOn:
@@ -46,7 +46,7 @@ metadata:
 spec:
   type: service
   lifecycle: development
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
   system: dex
   providesApis: [dex-api]
 
@@ -59,7 +59,7 @@ metadata:
 spec:
   type: openapi
   lifecycle: development
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
   system: dex
   definition: |
     openapi: "3.0.0"
@@ -83,7 +83,7 @@ metadata:
   name: traefik
   description: Sistema responsavel criar proxys para os servicos no k8s
 spec:
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -101,7 +101,7 @@ metadata:
 spec:
   type: service
   lifecycle: development
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
   system: traefik
   providesApis: [traefik-api]
   dependsOn:
@@ -124,7 +124,7 @@ metadata:
 spec:
   type: service
   lifecycle: development
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
   system: traefik
   providesApis: [traefik-api]
   dependsOn:
@@ -139,7 +139,7 @@ metadata:
 spec:
   type: openapi
   lifecycle: development
-  owner: kubernetes-team
+  owner: group:default/kubernetes-team
   system: traefik
   definition: |
     openapi: "3.0.0"
