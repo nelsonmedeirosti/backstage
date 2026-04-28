@@ -31,19 +31,15 @@ spec:
               - kind: Group
                 spec.type: team
 
-      dependencies:
-        owner:
-          allOf:
-            - properties:
-                system:
-                  title: Sistema
-                  type: string
-                  ui:field: EntityPicker
-                  ui:options:
-                    allowedKinds:
-                      - System
-                    catalogFilter:
-                      - kind: System
+        system:
+          title: Sistema
+          type: string
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            catalogFilter:
+              - kind: System
 
     - title: Kubernetes
       required:
