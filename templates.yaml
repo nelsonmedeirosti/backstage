@@ -23,6 +23,15 @@ spec:
         owner:
           title: Owner
           type: string
+          title: Owner
+          type: string
+          ui:field: OwnerPicker  
+          ui:options:
+            allowedKinds:
+              - Group
+            catalogFilter:
+              - kind: Group
+                spec.type: team
         system:
           title: Sistema (opcional)
           type: string
